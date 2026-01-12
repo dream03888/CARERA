@@ -1,0 +1,66 @@
+.safari-header {
+  background:
+    linear-gradient(180deg, rgba(110,64,26,.85), rgba(80,45,18,.9)),
+    url('/assets/wood-texture.png');
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.4);
+}
+/* =========================
+  Safari World Topbar
+========================= */
+
+.safari-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.safari-kicker {
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  color: #a7f3d0; /* soft jungle green */
+  text-transform: uppercase;
+}
+
+.safari-title {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+}
+
+/* Safari pill */
+.safari-pill {
+  background: linear-gradient(
+    180deg,
+    rgba(34,197,94,0.25),
+    rgba(16,185,129,0.15)
+  );
+  border: 1px solid rgba(34,197,94,0.4);
+}
+
+/* Buttons */
+.safari-btn {
+  border-radius: 18px;
+}
+
+/* Topbar background */
+.topbarShell {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(6, 80, 55, 0.85),
+      rgba(6, 50, 35, 0.9)
+    ),
+    radial-gradient(
+      600px 220px at 20% 0%,
+      rgba(34,197,94,0.25),
+      transparent 70%
+    );
+  border: 1px solid rgba(34,197,94,0.35);
+}

@@ -1,0 +1,80 @@
+<div class="headRow">
+  <div>
+    <div class="kicker">Zones / Locations</div>
+    <div class="title">เลือกจุดตรวจ</div>
+    <div class="muted mt6">กด Location เพื่อเปิด DVR/NVR Checklist</div>
+  </div>
+
+  <div class="headActions">
+    <input class="input w360" placeholder="ค้นหา location เช่น Office608 / Giraffe..." />
+    <select class="select w170">
+      <option>All</option>
+      <option>Pending</option>
+      <option>Issue</option>
+      <option>Completed</option>
+    </select>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<div class="tabletSplit">
+  <div class="panel panelInner">
+    <div class="title t15">Locations</div>
+    <div class="muted mt6">ตัวอย่างจากข้อมูลจริง</div>
+    <div class="hr"></div>
+
+    <div class="list">
+      <div class="row clickable" *ngFor="let cam of _cameraData">
+        <div class="grow">
+          <div class="name">{{ cam.camera_point }}</div>
+
+          <div class="meta">
+            {{ cam.zone_type }} • {{ cam.camera_brand }} • {{ cam.camera_qty }} ch
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- PAGINATION -->
+<div class="pagination" *ngIf="totalPages > 1">
+  <button
+    (click)="changePage(currentPage - 1)"
+    [disabled]="currentPage === 1"
+  >
+    ◀
+  </button>
+
+  <button
+    *ngFor="let p of [].constructor(totalPages); let i = index"
+    (click)="changePage(i + 1)"
+    [class.active]="currentPage === i + 1"
+  >
+    {{ i + 1 }}
+  </button>
+
+  <button
+    (click)="changePage(currentPage + 1)"
+    [disabled]="currentPage === totalPages"
+  >
+    ▶
+  </button>
+</div>
+
+  </div>                                                                                                                                                                                                                       
+
+  <div class="panel panelInner">
+    <div class="title t15">Detail Preview</div>
+    <div class="hr"></div>
+
+    <div class="row">
+      <div class="grow">
+        <div class="name">Dolphin Nursery A-B</div>
+        <div class="meta">Brand: Hikvision • Channels: 8 • Last Checked: 10 Jan 2026</div>
+      </div>
+      <div class="right">
+        <span class="chip bad">❌ Has issue</span>
+        <button class="btn small primary" type="button">Open Checklist</button>
+      </div>
+    </div>
+  </div>
+</div>

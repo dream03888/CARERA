@@ -1,0 +1,117 @@
+<div class="brand">
+  <div class="logo"></div>
+  <div class="brandText">
+    <div class="brandTitle">Safari World Zoo</div>
+    <div class="brandSub">CCTV Checklist</div>
+  </div>
+</div>
+
+
+<nav class="nav" aria-label="Primary">
+  <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+    🏠 Dashboard
+    <span class="badge warn">{{ pendingCount }} Pending</span>
+  </a>
+
+  <a routerLink="/zones" routerLinkActive="active">
+    🗺️ Zones / Locations
+    <span class="badge">{{ _zoneData[0]?.count }} Zones</span>
+  </a>
+
+  <a routerLink="/checklist" routerLinkActive="active">
+    📋 DVR/NVR Checklist
+    <span class="badge">Continue</span>
+  </a>
+
+  <a routerLink="/followup" routerLinkActive="active">
+    🛠 Follow-up Board
+    <span class="badge bad">{{ issuesCount }} Issues</span>
+  </a>
+
+  <a routerLink="/history" routerLinkActive="active">
+    🧾 History / Reports
+  </a>
+</nav>
+
+<div class="section">
+  <h4>Inspection Round</h4>
+
+<!-- Start Date -->
+<div class="field">
+  <div class="label">Start Date</div>
+  <input
+    type="date"
+    class="input"
+    [(ngModel)]="startDate"
+    (change)="calculateEndDate()"
+  />
+</div>
+
+<!-- Frequency -->
+<div class="field">
+  <div class="label">Frequency</div>
+  <select
+    class="select"
+    [(ngModel)]="frequency"
+    (change)="calculateEndDate()"
+  >
+    <option [ngValue]="7">Every 7 days</option>
+    <option [ngValue]="14">Every 14 days</option>
+  </select>
+</div>
+
+<!-- Date Range Preview -->
+<div class="pill" *ngIf="startDate && endDate">
+  📅 {{ displayStartDate }} – {{ displayEndDate }}
+</div>
+
+
+<div class="field">
+  <div class="label">Round / Zone</div>
+
+<ng-select
+  class="ng-select-dark"
+  [items]="_ReqZone"
+  bindLabel="zone_name"
+  bindValue="zone_id"
+  placeholder="Select Zone"
+  [(ngModel)]="selectedZoneId"
+  [clearable]="false"
+  [searchable]="true">
+
+
+
+
+    <!-- dropdown option -->
+    <ng-template ng-option-tmp let-item="item">
+      <div class="zone-option">
+        <div class="zone-row">
+          <span class="zone-dot"></span>
+          <span class="zone-name">{{ item.zone_name }}</span>
+        </div>
+        <div class="zone-meta">
+          {{ item.category || 'Operational Zone' }}
+        </div>
+      </div>
+    </ng-template>
+
+    <!-- selected label -->
+    <ng-template ng-label-tmp let-item="item">
+      <div class="zone-label">
+        <span class="zone-dot"></span>
+        {{ item.zone_name }}
+      </div>
+    </ng-template>
+
+  </ng-select>
+</div>
+  <div class="sidebarActions">
+    <button class="btn primary small" type="button"(click)="reqTransaction()">▶ Continue</button>
+
+
+    <button class="btn small" type="button">⬇ Export Excel</button>
+  </div>
+
+  <div class="hr"></div>
+  <div class="pill">👤 Inspector: <b>คุณ</b> <span class="muted">• Auto time log</span></div>
+</div>

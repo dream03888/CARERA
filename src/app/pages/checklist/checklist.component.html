@@ -1,0 +1,184 @@
+<div class="roundList">
+
+  <div class="roundCard" *ngFor="let r of rounds">
+
+    <!-- ROUND HEADER -->
+    <div class="roundHeader" (click)="toggleRound(r)">
+      <div class="roundHeaderLeft">
+        <div class="roundTitle">
+          📋 ตรวจสอบกล้อง — {{ r.start_date | date:'dd MMM yyyy' }} – {{ r.end_date | date:'dd MMM yyyy' }}
+        </div>
+        <div class="roundMeta">Inspector: {{ r.emp_code }}</div>
+      </div>
+
+      <div class="progressWrap">
+        <div class="progressTop">{{ r.completed_count || 0 }}/{{ r.total_cameras }} Confirmed</div>
+        <div class="bar">
+          <div class="barFill" [style.width.%]="getRoundPercent(r)"></div>
+        </div>
+
+
+          <!-- ✅ Close Job Button -->
+    <button
+      *ngIf="r.completed_count === r.total_cameras && r.completed != 1"
+      class="closeJobBtn"
+      [disabled]="r.closed"
+      [class.closed]="r.closed"
+      (click)="closeJob(r); $event.stopPropagation()">
+
+      {{ r.closed ? '✔ ปิดงานแล้ว' : '🔒 ปิดงาน' }}
+
+    </button>
+      </div>
+    </div>
+
+    <!-- ROUND DETAIL -->
+    <div class="roundDetail" [class.open]="r.expanded">
+
+      <!-- ZONE -->
+      <div class="zoneCard" *ngFor="let z of r.zones">
+
+        <!-- ZONE SUMMARY -->
+        <div class="zoneSummary" (click)="toggleZone(r,z)">
+          <div class="zoneLeft">
+            <div class="zoneTitle">{{ z.zone_name }}</div>
+            <div class="zoneMeta">{{ z.total_cameras }} กล้อง • {{ z.brand }}</div>
+          </div>
+
+          <div class="progressWrap">
+            <div class="progressTop">{{ z.completed_count }}/{{ z.total_cameras }}</div>
+            <div class="bar">
+              <div class="barFill" [style.width.%]="getZonePercent(z)"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ZONE DETAIL -->
+        <div class="zoneDetail" [class.open]="z.expanded">
+
+          <!-- ================= NVR CONTROLLER ================= -->
+          <div class="nvrCard" (click)="$event.stopPropagation()">
+            <div class="nvrHeader">
+              🖥️ NVR Controller
+            </div>
+
+            <div class="nvrRow" [class.confirmed]="z.nvr.confirmed" [class.flash]="z.nvr.justConfirmed">
+
+              <div class="nvrName">
+                NVR-{{ z.zone_name }}
+              </div>
+
+              <div class="statusSeg">
+                <button type="button" class="seg ok"
+                        [class.active]="z.nvr.status === 1"
+                        (click)="setNvrStatus(z,1)">
+                  OK
+                </button>
+
+                <button type="button" class="seg bad"
+                        [class.active]="z.nvr.status === 2"
+                        (click)="setNvrStatus(z,2)">
+                  Offline
+                </button>
+
+                <button type="button" class="seg na"
+                        [class.active]="z.nvr.status === 3"
+                        (click)="setNvrStatus(z,3)">
+                  N/A
+                </button>
+              </div>
+
+              <div class="remarkBox" *ngIf="z.nvr.status === 2 || z.nvr.status === 3">
+                <input type="text"
+                       [(ngModel)]="z.nvr.remark"
+                       placeholder="ระบุเหตุผล NVR..."
+                       (click)="$event.stopPropagation()">
+              </div>
+
+              <button type="button"
+                      class="confirmBtn"
+                      [class.confirmed]="z.nvr.confirmed"
+                      [disabled]="z.nvr.confirmed"
+                      (click)="confirmNvr(r,z); $event.stopPropagation()">
+                {{ z.nvr.confirmed ? '✔ Confirmed' : 'Confirm NVR' }}
+              </button>
+
+            </div>
+          </div>
+          <!-- =================================================== -->
+
+          <!-- POINT -->
+          <div class="pointCard" *ngFor="let p of z.points">
+
+            <div class="pointHeader" (click)="togglePoint(z,p)">
+              <div class="pointLeft">
+                <div class="pointTitle">📍 {{ p.point_name }}</div>
+                <div class="pointMeta">{{ p.total_cameras }} กล้อง</div>
+              </div>
+
+              <div class="progressWrap small">
+                <div class="progressTop">{{ p.completed_count }}/{{ p.total_cameras }}</div>
+                <div class="bar">
+                  <div class="barFill" [style.width.%]="getPointPercent(p)"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pointDetail" [class.open]="p.expanded">
+
+              <!-- CAMERA -->
+              <div class="camRow"
+                   *ngFor="let cam of p.cameras"
+                   [class.confirmed]="cam.confirmed"
+                   [class.flash]="cam.justConfirmed">
+
+                <div class="camName">{{ cam.camera_code }}</div>
+
+                <div class="statusSeg" (click)="$event.stopPropagation()">
+                  <button type="button" class="seg ok"
+                          [class.active]="cam.status === 1"
+                          (click)="setStatus(cam,1)">
+                    OK
+                  </button>
+
+                  <button type="button" class="seg bad"
+                          [class.active]="cam.status === 2"
+                          (click)="setStatus(cam,2)">
+                    Offline
+                  </button>
+
+                  <button type="button" class="seg na"
+                          [class.active]="cam.status === 3"
+                          (click)="setStatus(cam,3)">
+                    N/A
+                  </button>
+                </div>
+
+                <!-- Remark -->
+                <div class="remarkBox" *ngIf="cam.status === 2 || cam.status === 3">
+                  <input type="text"
+                         [(ngModel)]="cam.remark"
+                         placeholder="ระบุเหตุผล..."
+                         (click)="$event.stopPropagation()">
+                </div>
+
+                <button type="button"
+                        class="confirmBtn"
+                        [class.confirmed]="cam.confirmed"
+                        [disabled]="cam.confirmed"
+                        (click)="confirmCamera(r,z,p,cam); $event.stopPropagation()">
+                  {{ cam.confirmed ? '✔ Confirmed' : 'Confirm' }}
+                </button>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

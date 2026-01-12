@@ -57,6 +57,16 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+
+
+            "options": {
+            "host": "0.0.0.0",
+            "port": 9866,
+            "allowedHosts": ["swapp.dyndns.org"],
+            "liveReload": true
+          },
+
+
           "configurations": {
             "production": {
               "buildTarget": "Camera:build:production"
@@ -92,5 +102,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "e8cee078-ca78-439b-9880-397c7a226722"
   }
 }

@@ -1,0 +1,377 @@
+/* Sidebar brand visuals (ส่วนอื่นใช้ global class ใน styles.css) */
+.brand{display:flex; align-items:center; gap:10px; padding: 6px 4px 12px;}
+.logo{
+  width: 38px; height:38px; border-radius: 12px;
+  background: radial-gradient(circle at 30% 25%, rgba(59,130,246,.9), rgba(59,130,246,.25) 55%, rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow: 0 12px 24px rgba(59,130,246,.12);
+}
+.brand .name{
+  font-weight: 860;
+  letter-spacing: .2px;
+}
+.brand .desc{
+  opacity: .95;
+}
+
+
+.nav{display:flex; flex-direction:column; gap: 8px; margin-top: 8px;}
+.nav a{
+  border: 1px solid transparent;
+  padding: 10px 10px;
+  border-radius: 14px;
+  color: var(--muted);
+  display:flex; align-items:center; gap: 10px;
+  background: transparent;
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
+}
+.nav a:hover{background: rgba(255,255,255,.05); color: var(--text); border-color: var(--stroke)}
+.nav a.active{
+  background: rgba(59,130,246,.14);
+  border-color: rgba(59,130,246,.35);
+  color: var(--text);
+}
+.badge{
+  margin-left:auto;
+  font-size:12px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border:1px solid var(--stroke);
+  color: var(--muted);
+  background: rgba(255,255,255,.04);
+}
+.badge.bad{color: rgba(239,68,68,.95); border-color: rgba(239,68,68,.35); background: rgba(239,68,68,.10)}
+.badge.warn{color: rgba(245,158,11,.95); border-color: rgba(245,158,11,.35); background: rgba(245,158,11,.12)}
+
+.section{
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--stroke);
+}
+.section h4{
+  margin: 0 0 10px;
+  font-size: 12px;
+  letter-spacing:.3px;
+  color: var(--muted2);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.sidebarActions{display:flex; gap:10px; flex-wrap:wrap;}
+.optionTitle {
+  font-weight: 600;
+}
+
+.optionMeta {
+  font-size: 12px;
+  opacity: .65;
+}
+/* ===== ng-select base ===== */
+
+
+/* ===== option ===== */
+.zone-option {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.zone-option:hover {
+  background: rgba(255,255,255,.06);
+  border-radius: 8px;
+}
+
+/* ===== text ===== */
+.zone-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.zone-meta {
+  font-size: 12px;
+  opacity: .6;
+}
+
+/* ===== selected label ===== */
+.zone-label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* ===== prevent text overlap ===== */
+.ng-dropdown-panel .ng-option {
+  white-space: normal;   /* สำคัญมาก */
+  line-height: 1.4;
+}
+/* ===== ng-select base ===== */
+.ng-select-dark .ng-select-container {
+  background: #0f172a;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 12px;
+  min-height: 44px;
+  padding: 4px 8px;
+  color: #e5e7eb;
+}
+
+/* ===== dropdown panel ===== */
+.ng-select-dark .ng-dropdown-panel {
+  background: #020617;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 12px;
+  margin-top: 6px;
+  padding: 6px 0;
+  z-index: 9999; /* กันซ้อน */
+}
+
+/* ===== option ===== */
+.zone-option {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.zone-option:hover {
+  background: rgba(255,255,255,.06);
+  border-radius: 8px;
+}
+
+/* ===== text ===== */
+.zone-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.zone-meta {
+  font-size: 12px;
+  opacity: .6;
+}
+
+/* ===== selected label ===== */
+.zone-label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* ===== prevent text overlap ===== */
+.ng-dropdown-panel .ng-option {
+  white-space: normal;   /* สำคัญมาก */
+  line-height: 1.4;
+}
+/* ===== ng-select base ===== */
+.ng-select-dark .ng-select-container {
+  background: #0f172a;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 12px;
+  min-height: 44px;
+  padding: 4px 8px;
+  color: #e5e7eb;
+}
+
+/* ===== dropdown panel ===== */
+.ng-select-dark .ng-dropdown-panel {
+  background: #020617;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 12px;
+  margin-top: 6px;
+  padding: 6px 0;
+  z-index: 9999; /* กันซ้อน */
+}
+
+/* ===== option ===== */
+.zone-option {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.zone-option:hover {
+  background: rgba(255,255,255,.06);
+  border-radius: 8px;
+}
+
+/* ===== text ===== */
+.zone-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.zone-meta {
+  font-size: 12px;
+  opacity: .6;
+}
+
+/* ===== selected label ===== */
+.zone-label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* ===== prevent text overlap ===== */
+.ng-dropdown-panel .ng-option {
+  white-space: normal;   /* สำคัญมาก */
+  line-height: 1.4;
+}
+.ng-select {
+  position: relative;
+}
+
+.ng-dropdown-panel {
+  position: absolute !important;
+}
+/* ================= Sidebar Component Only ================= */
+
+:host {
+  display: block;
+}
+
+/* -------- Brand -------- */
+.sidebar .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 4px 12px;
+}
+
+.sidebar .logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: radial-gradient(
+    circle at 30% 25%,
+    rgba(59,130,246,.9),
+    rgba(59,130,246,.25) 55%,
+    rgba(255,255,255,.06)
+  );
+  border: 1px solid var(--stroke);
+  box-shadow: 0 12px 24px rgba(59,130,246,.12);
+}
+
+.sidebar .brand .name {
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+/* -------- Nav -------- */
+.sidebar .nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.sidebar .nav a {
+  border: 1px solid transparent;
+  padding: 10px;
+  border-radius: 14px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: .15s;
+}
+
+.sidebar .nav a:hover {
+  background: rgba(255,255,255,.05);
+  color: var(--text);
+  border-color: var(--stroke);
+}
+
+.sidebar .nav a.active {
+  background: rgba(59,130,246,.14);
+  border-color: rgba(59,130,246,.35);
+  color: var(--text);
+}
+
+/* -------- NG-SELECT (Scoped) -------- */
+.sidebar .ng-select-dark .ng-select-container {
+  background: var(--panel);
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  min-height: 48px;
+  padding: 4px 10px;
+  color: var(--text);
+}
+
+.sidebar .ng-select-dark.ng-select-focused .ng-select-container {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(59,130,246,.14);
+}
+
+.sidebar .ng-select-dark .ng-dropdown-panel {
+  background: var(--panel);
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  margin-top: 6px;
+  padding: 6px 0;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+}
+
+.sidebar .ng-dropdown-panel .ng-option {
+  white-space: normal;
+  line-height: 1.4;
+}
+
+/* -------- Option Template -------- */
+.sidebar .zone-option {
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar .zone-option:hover {
+  background: rgba(59,130,246,.08);
+  border-radius: 10px;
+}
+
+.sidebar .zone-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.sidebar .zone-meta {
+  font-size: 12px;
+  opacity: .6;
+}
+
+.sidebar .zone-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.card-box {
+  background: #f7fbff;
+  border: 1px solid #c3d4ee;
+  border-radius: 4px;
+  padding: 10px 12px;
+  margin-top:   12px; ;
+}
+.ng-dropdown-panel {
+  z-index: 9999;
+}
+.sidebarShell {
+  overflow: visible;   /* แทน auto */
+}
+/* สำหรับ select dark theme */
+.select {
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+
+/* dropdown list */
+.select option {
+  background-color: #020617;
+  color: #e5e7eb;
+}
+
+/* ตอน hover / selected */
+.select option:checked,
+.select option:hover {
+  background-color: #2563eb;
+  color: #ffffff;
+}
