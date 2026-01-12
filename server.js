@@ -3,7 +3,7 @@ const path = require("path");
 
 const app = express();
 
-const distPath = path.join(__dirname, "dist/camera");
+const distPath = path.join(__dirname, "dist/camera/browser");
 
 app.use(express.static(distPath));
 
