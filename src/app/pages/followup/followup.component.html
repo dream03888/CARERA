@@ -78,9 +78,9 @@
              (change)="onSelectImage($event)">
     </div>
 
-    <div class="preview" *ngIf="previewImage">
-      <img [src]="previewImage">
-    </div>
+<div class="preview" *ngIf="previewImage">
+  <img [src]="previewImage" class="preview-img">
+</div>
 
     <button class="btnSave" (click)="saveIssue()">💾 Save</button>
 

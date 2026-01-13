@@ -74,12 +74,13 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  background :black
 }
 
-.zone-option:hover {
-  background: rgba(255,255,255,.06);
+/* .zone-option:hover {
+  background: black;
   border-radius: 8px;
-}
+} */
 
 /* ===== text ===== */
 .zone-name {
@@ -123,18 +124,7 @@
   z-index: 9999; /* กันซ้อน */
 }
 
-/* ===== option ===== */
-.zone-option {
-  padding: 10px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
 
-.zone-option:hover {
-  background: rgba(255,255,255,.06);
-  border-radius: 8px;
-}
 
 /* ===== text ===== */
 .zone-name {
@@ -322,10 +312,10 @@
   gap: 4px;
 }
 
-.sidebar .zone-option:hover {
+/* .sidebar .zone-option:hover {
   background: rgba(59,130,246,.08);
   border-radius: 10px;
-}
+} */
 
 .sidebar .zone-name {
   font-weight: 600;
@@ -374,4 +364,72 @@
 .select option:hover {
   background-color: #2563eb;
   color: #ffffff;
+}
+/* ng-select dark base */
+.ng-select-dark .ng-select-container {
+  background: #020617;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.15);
+  min-height: 48px;
+  padding: 4px 10px;
+}
+
+/* dropdown panel */
+.ng-select-dark .ng-dropdown-panel {
+  background: #020617;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.15);
+  margin-top: 6px;
+  max-height: 280px;
+}
+
+/* option row */
+.zone-option {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 14px;
+  gap: 4px;
+  line-height: 1.4;
+}
+
+/* main row */
+.zone-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* dot */
+.zone-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+}
+
+/* name */
+.zone-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* meta */
+.zone-metaneta, .zone-meta {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* hover */
+.ng-select-dark .ng-option:hover {
+  background:red rgba(37,99,235,.25);
+}
+
+/* selected label */
+.zone-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
 }

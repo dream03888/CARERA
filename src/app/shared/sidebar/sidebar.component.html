@@ -55,7 +55,7 @@
     [(ngModel)]="frequency"
     (change)="calculateEndDate()"
   >
-    <option [ngValue]="7">Every 7 days</option>
+    <option [ngValue]="1">Every 7 days</option>
     <option [ngValue]="14">Every 14 days</option>
   </select>
 </div>
@@ -69,18 +69,15 @@
 <div class="field">
   <div class="label">Round / Zone</div>
 
-<ng-select
-  class="ng-select-dark"
-  [items]="_ReqZone"
-  bindLabel="zone_name"
-  bindValue="zone_id"
-  placeholder="Select Zone"
-  [(ngModel)]="selectedZoneId"
-  [clearable]="false"
-  [searchable]="true">
-
-
-
+  <ng-select
+    class="select"
+    [items]="_ReqZone"
+    bindLabel="zone_name"
+    bindValue="zone_id"
+    placeholder="Select Zone"
+    [(ngModel)]="selectedZoneId"
+    [clearable]="false"
+    [searchable]="true">
 
     <!-- dropdown option -->
     <ng-template ng-option-tmp let-item="item">
@@ -99,12 +96,13 @@
     <ng-template ng-label-tmp let-item="item">
       <div class="zone-label">
         <span class="zone-dot"></span>
-        {{ item.zone_name }}
+        <span>{{ item.zone_name }}</span>
       </div>
     </ng-template>
 
   </ng-select>
 </div>
+
   <div class="sidebarActions">
     <button class="btn primary small" type="button"(click)="reqTransaction()">▶ Continue</button>
 

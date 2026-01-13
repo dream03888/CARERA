@@ -81,21 +81,28 @@ export class FollowupComponent {
     this.previewFull = null;
   }
 
-  async saveIssue() {
-    const formData = new FormData();
-    formData.append('id', this.selectedIssue.id);
-    formData.append('status', this.selectedIssue.status);
-    formData.append('fix_remark', this.selectedIssue.fix_remark || '');
+async saveIssue() {
 
-    if (this.selectedImageFile) {
-      formData.append('photo', this.selectedImageFile);
-    }
-      console.log(formData)
-    // const res = await this.getData.UpdateIssueWithPhoto(formData);
+  if (!this.selectedIssue) return;
 
-    // if (res.status === 200) {
-    //   alert('บันทึกเรียบร้อย');
-    //   this.loadIssues();
-    // }
+  const payload = {
+    id: this.selectedIssue.id,
+    status: this.selectedIssue.status,
+    fix_remark: this.selectedIssue.fix_remark || "",
+    photo_base64: this.previewImage   // 👈 ส่ง base64
+  };
+
+  console.log("SEND:", payload);
+
+  const res = await this.getData.UpdateIssueWithPhoto(payload);
+
+  if (res.status === 200) {
+    alert("บันทึกเรียบร้อย");
+    this.loadIssues();
+    this.previewImage = null;
+    this.selectedImageFile = null;
   }
+}
+
+
 }

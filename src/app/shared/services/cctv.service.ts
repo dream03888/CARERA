@@ -86,6 +86,15 @@ async reqInsertTRansaction(transaction:any): Promise<IResponseMessage> {
 
 
 
+  async UpdateIssueWithPhoto(data:any): Promise<IResponseMessage> {
+    await this.socket.emit('req_insert_issues',data);
+    return await this.socket
+      .fromOneTimeEvent<IResponseMessage>('return_req_insert_issues')
+      .then((response) => {
+        return response;
+      });
+    }
+
   async ErrorCamera(): Promise<IResponseMessage> {
     await this.socket.emit('error_camera',);
     return await this.socket
