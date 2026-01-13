@@ -60,18 +60,18 @@ export class FollowupComponent {
     this.statusOpen = false;
   }
 
-  onSelectImage(event:any) {
-    const file = event.target.files[0];
-    if (!file) return;
+onSelectImage(event:any) {
+  const file = event.target.files[0];
+  if (!file) return;
 
-    this.selectedImageFile = file;
+  this.selectedImageFile = file;
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.previewImage = reader.result as string;
-    };
-    reader.readAsDataURL(file);
-  }
+  const reader = new FileReader();
+  reader.onload = () => {
+    this.previewImage = reader.result as string; // 👈 base64
+  };
+  reader.readAsDataURL(file);
+}
 
   openPreview(photo:string) {
     this.previewFull = photo;
@@ -83,26 +83,23 @@ export class FollowupComponent {
 
 async saveIssue() {
 
-  if (!this.selectedIssue) return;
-
   const payload = {
     id: this.selectedIssue.id,
     status: this.selectedIssue.status,
-    fix_remark: this.selectedIssue.fix_remark || "",
+    fix_remark: this.selectedIssue.fix_remark || '',
     photo_base64: this.previewImage   // 👈 ส่ง base64
   };
 
-  console.log("SEND:", payload);
+  console.log("Payload:", payload);
 
   const res = await this.getData.UpdateIssueWithPhoto(payload);
 
   if (res.status === 200) {
-    alert("บันทึกเรียบร้อย");
+    alert('บันทึกเรียบร้อย');
     this.loadIssues();
-    this.previewImage = null;
-    this.selectedImageFile = null;
   }
 }
+
 
 
 }
