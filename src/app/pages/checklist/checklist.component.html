@@ -18,13 +18,17 @@
         </div>
 
 
-        <!-- ✅ Close Job Button -->
-        <button *ngIf="r.completed_count === r.total_cameras && r.completed != 1" class="closeJobBtn"
-          [disabled]="r.closed" [class.closed]="r.closed" (click)="closeJob(r); $event.stopPropagation()">
+          <!-- ✅ Close Job Button -->
+    <button
+      *ngIf="r.completed_count === r.total_cameras && r.completed != 1"
+      class="closeJobBtn"
+      [disabled]="r.closed"
+      [class.closed]="r.closed"
+      (click)="closeJob(r); $event.stopPropagation()">
 
-          {{ r.closed ? '✔ ปิดงานแล้ว' : '🔒 ปิดงาน' }}
+      {{ r.closed ? '✔ ปิดงานแล้ว' : '🔒 ปิดงาน' }}
 
-        </button>
+    </button>
       </div>
     </div>
 
@@ -65,26 +69,37 @@
               </div>
 
               <div class="statusSeg">
-                <button type="button" class="seg ok" [class.active]="z.nvr.status === 1" (click)="setNvrStatus(z,1)">
+                <button type="button" class="seg ok"
+                        [class.active]="z.nvr.status === 1"
+                        (click)="setNvrStatus(z,1)">
                   OK
                 </button>
 
-                <button type="button" class="seg bad" [class.active]="z.nvr.status === 2" (click)="setNvrStatus(z,2)">
+                <button type="button" class="seg bad"
+                        [class.active]="z.nvr.status === 2"
+                        (click)="setNvrStatus(z,2)">
                   Offline
                 </button>
 
-                <button type="button" class="seg na" [class.active]="z.nvr.status === 3" (click)="setNvrStatus(z,3)">
+                <button type="button" class="seg na"
+                        [class.active]="z.nvr.status === 3"
+                        (click)="setNvrStatus(z,3)">
                   N/A
                 </button>
               </div>
 
               <div class="remarkBox" *ngIf="z.nvr.status === 2 || z.nvr.status === 3">
-                <input type="text" [(ngModel)]="z.nvr.remark" placeholder="ระบุเหตุผล NVR..."
-                  (click)="$event.stopPropagation()">
+                <input type="text"
+                       [(ngModel)]="z.nvr.remark"
+                       placeholder="ระบุเหตุผล NVR..."
+                       (click)="$event.stopPropagation()">
               </div>
 
-              <button type="button" class="confirmBtn" [class.confirmed]="z.nvr.confirmed" [disabled]="z.nvr.confirmed"
-                (click)="confirmNvr(r,z); $event.stopPropagation()">
+              <button type="button"
+                      class="confirmBtn"
+                      [class.confirmed]="z.nvr.confirmed"
+                      [disabled]="z.nvr.confirmed"
+                      (click)="confirmNvr(r,z); $event.stopPropagation()">
                 {{ z.nvr.confirmed ? '✔ Confirmed' : 'Confirm NVR' }}
               </button>
 
@@ -112,36 +127,47 @@
             <div class="pointDetail" [class.open]="p.expanded">
 
               <!-- CAMERA -->
-              <div class="camRow" *ngFor="let cam of p.cameras" [class.confirmed]="cam.confirmed"
-                [class.flash]="cam.justConfirmed">
+              <div class="camRow"
+                   *ngFor="let cam of p.cameras"
+                   [class.confirmed]="cam.confirmed"
+                   [class.flash]="cam.justConfirmed">
 
                 <div class="camName">{{ cam.camera_code }}</div>
 
                 <div class="statusSeg" (click)="$event.stopPropagation()">
-                  <button type="button" class="seg ok" [class.active]="cam.status === 1" (click)="setStatus(cam,1)">
+                  <button type="button" class="seg ok"
+                          [class.active]="cam.status === 1"
+                          (click)="setStatus(cam,1)">
                     OK
                   </button>
 
-                  <button type="button" class="seg bad" [class.active]="cam.status === 2" (click)="setStatus(cam,2)">
+                  <button type="button" class="seg bad"
+                          [class.active]="cam.status === 2"
+                          (click)="setStatus(cam,2)">
                     Offline
                   </button>
 
-                  <button type="button" class="seg na" [class.active]="cam.status === 3" (click)="setStatus(cam,3)">
+                  <button type="button" class="seg na"
+                          [class.active]="cam.status === 3"
+                          (click)="setStatus(cam,3)">
                     N/A
                   </button>
                 </div>
 
                 <!-- Remark -->
                 <div class="remarkBox" *ngIf="cam.status === 2 || cam.status === 3">
-                  <input type="text" [(ngModel)]="cam.remark" placeholder="ระบุเหตุผล..."
-                    (click)="$event.stopPropagation()">
+                  <input type="text"
+                         [(ngModel)]="cam.remark"
+                         placeholder="ระบุเหตุผล..."
+                         (click)="$event.stopPropagation()">
                 </div>
 
-                <button type="button" class="confirmBtn" [class.confirmed]="cam.status !== null"
-                  [disabled]="cam.status !== null" (click)="confirmCamera(r, z, p, cam); $event.stopPropagation()">
-
-                  {{ cam.status !== null ? '✔ Confirmed' : 'Confirm' }}
-
+                <button type="button"
+                        class="confirmBtn"
+                        [class.confirmed]="cam.confirmed"
+                        [disabled]="cam.confirmed"
+                        (click)="confirmCamera(r,z,p,cam); $event.stopPropagation()">
+                  {{ cam.confirmed ? '✔ Confirmed' : 'Confirm' }}
                 </button>
 
               </div>
