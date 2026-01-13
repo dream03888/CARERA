@@ -1,7 +1,7 @@
 export const environment = {
   //  socketEndpoint: 'ws://10.0.0.100:9876',
-  socketEndpoint: 'http://10.0.0.100:5634',
-  // socketEndpoint: 'https://apis-camera-production.up.railway.app',
+  // socketEndpoint: 'http://10.0.0.100:5634',
+  socketEndpoint: 'https://apis-camera-production.up.railway.app',
 
   appVersion: '2.0.0',
   AUTH_KEY: 'auth-token',
