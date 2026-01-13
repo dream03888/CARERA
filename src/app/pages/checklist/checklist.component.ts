@@ -25,7 +25,7 @@ export class ChecklistComponent {
   async MyRequestion() {
     const data = await this.getData.MyRequestion();
     if (data.status !== 200 || !Array.isArray(data.msg)) return;
-
+      console.log(data.msg)
     this._dataZone = data.msg.map((z: any) => {
       const rawLists =
         typeof z.lists === 'string' ? JSON.parse(z.lists) : z.lists ?? [];
